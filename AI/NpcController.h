@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "Perception/AIPerceptionTypes.h"
+
 #include "NpcController.generated.h"
 
 /**
@@ -32,4 +34,16 @@ private:
 	class UBehaviorTree* btree;
 	
 	class UBlackboardComponent* blackboard_component;
+
+	class UAISenseConfig_Sight* sight_config;
+	class UAIPerceptionComponent* perception_comp;
+
+	UFUNCTION()
+	virtual void ActorsPerceptionUpdated( TArray<AActor*> const& UpdatedActors) override;
+
+	UFUNCTION()
+	void OnTargetDetected(AActor* actor, FAIStimulus stimulus);
+
+	void SetupPerceptionSystem();
+
 };

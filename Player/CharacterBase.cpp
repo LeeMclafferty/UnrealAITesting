@@ -3,6 +3,8 @@
 
 #include "CharacterBase.h"
 #include "Components/StaticMeshComponent.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
+#include "Perception/AISense_Sight.h"
 
 ACharacterBase::ACharacterBase()
 {
@@ -15,6 +17,8 @@ ACharacterBase::ACharacterBase()
 
 	is_attacking = false;
 	combo_counter = 0;
+
+	SetupStimulus();
 }
 
 void ACharacterBase::Tick(float DeltaSeconds)
@@ -55,4 +59,11 @@ void ACharacterBase::OnPressAttackButton()
 void ACharacterBase::OnReleaseAttachButton()
 {
 		//is_attacking = false;
+}
+
+void ACharacterBase::SetupStimulus()
+{
+	stimulus = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("Stimulus Component"));
+	stimulus->RegisterForSense(TSubclassOf<UAISense_Sight>());
+	stimulus->RegisterWithPerceptionSystem();
 }

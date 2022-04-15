@@ -6,5 +6,7 @@
 /*Header with no data that just stores keys for a black board. All blackboard keys are stored as a char / string.*/
 namespace bb_keys 
 {
-	const TCHAR* target_location =  TEXT("TargetLocation");
+	const FName target_location =  TEXT("TargetLocation");
+	const FName can_see_player = TEXT("CanSeePlayer");
+
 }

@@ -50,4 +50,8 @@ private:
 	void OnPressAttackButton();
 	void OnReleaseAttachButton();
 	int32 combo_counter;
+
+	class UAIPerceptionStimuliSourceComponent* stimulus;
+
+	void SetupStimulus();
 };
